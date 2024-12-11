@@ -3,13 +3,25 @@ import axios from "axios";
 const urlTodos = "https://jsonplaceholder.typicode.com/todos";
 let tasks = [];
 
+console.log(tasks);
+
 axios.get(urlTodos)
   .then((response) => {
     tasks = response.data;
+    console.log(tasks);
+    printTask(tasks);
+    /* changeColorTask(tasks); */
+    clickButton();
   })
   .catch((response) => {
     alert(`Ehto no funciona: ${response}`);
   });
+
+/* Función que dado un id de tarea, cambia el estado de dicha tarea a completado */
+function completar(idRecogido) {
+  const taskTarget = tasks.find(task => task.id === idRecogido);
+  taskTarget.completed = true;
+}
 
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
@@ -67,7 +79,3 @@ function clickButton() {
     onlySeeMyTasks();
   });
 }
-
-printTask(tasks);
-/* changeColorTask(tasks); */
-clickButton();
