@@ -377,18 +377,31 @@ function printTask(tasks) {
           <div class="completed">Estado ${task.completed}</div> 
         </div>
         `;
+    /* Añadimos un atributo para indicar si la tarea está completada */
+    taskContent.setAttribute("task-status", task.completed);
     /* Devolvemos la tarjeta a la variable js photoContainer o a la clase .photos de HTML */
     tasksContainer.appendChild(taskContent);
   });
 }
 
+/* Función que cambia el color de las tareas según su estado */
+function changeColorTask(tasks) {
+  const taskCards = document.querySelectorAll(".card");
+  taskCards.forEach(card => {
+    const isCompleted = card.getAttribute("task-status") === "true"; /* Comprobamos si está completada */
+    card.style.color = isCompleted ? "green" : "red"; /* Cambiamos el color */
+  });
+}
+
 function clearAll() {
-  document.getElementsByClassName("tasks").value = "";
+  const tasksContainer = document.querySelector(".tasks");
+  tasksContainer.innerHTML = "";
 }
 
 function onlySeeMyTasks() {
   const filteredTasks = tasks.filter(task => task.userId === 3); /* Filtramos las tareas y las guardamos */
   printTask(filteredTasks); /* Imprimimos las tareas filtradas */
+  changeColorTask(filteredTasks);
 }
 
 function clickButton() {
@@ -400,4 +413,5 @@ function clickButton() {
 }
 
 printTask(tasks);
+changeColorTask(tasks);
 clickButton();
