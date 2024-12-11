@@ -370,10 +370,12 @@ function printTask(tasks) {
     taskContent.style.maxWidth = "250px";
     /* Dentro de ese div, imprimimos el siguiente código de HTML */
     taskContent.innerHTML = `
-          <div class="userId">${task.userId}</div>
-          <div class="id">${task.id}</div> 
+        <div class="taskCard">
+          <div class="userId">Usuario ${task.userId}</div>
+          <div class="id">Tarea número ${task.id}</div> 
           <div class="title">${task.title}</div> 
-          <div class="completed">${task.completed}</div> 
+          <div class="completed">Estado ${task.completed}</div> 
+        </div>
         `;
     /* Devolvemos la tarjeta a la variable js photoContainer o a la clase .photos de HTML */
     tasksContainer.appendChild(taskContent);
