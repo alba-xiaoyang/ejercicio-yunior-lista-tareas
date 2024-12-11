@@ -19,3 +19,11 @@ body {
   max-width: 1200px; /* Máximo ancho del contenedor */
   margin: 0 auto; /* Centra horizontalmente */
 }
+
+.task-card {
+  color: red;
+}
+
+.completed {
+  color: green;
+}

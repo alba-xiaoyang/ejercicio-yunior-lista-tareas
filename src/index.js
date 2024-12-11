@@ -369,12 +369,17 @@ function printTask(tasks) {
     taskContent.classList.add("card", "m-2"); /* A ese div, le añadimos una clase que sería .card y .m-2 */
     taskContent.style.maxWidth = "250px";
     /* Dentro de ese div, imprimimos el siguiente código de HTML */
+    /* Crear una variable para guardar las clases para la tarea */
+    let taskCompleted = "";
+    if (task.completed === true) {
+      taskCompleted = "completed";
+    }
     taskContent.innerHTML = `
-        <div class="taskCard">
+        <div class="task-card ${taskCompleted}">
           <div class="userId">Usuario ${task.userId}</div>
           <div class="id">Tarea número ${task.id}</div> 
           <div class="title">${task.title}</div> 
-          <div class="completed">Estado ${task.completed}</div> 
+          <div class="status">Estado ${task.completed}</div> 
         </div>
         `;
     /* Añadimos un atributo para indicar si la tarea está completada */
@@ -391,6 +396,7 @@ function changeColorTask(tasks) {
     const isCompleted = card.getAttribute("task-status") === "true"; /* Comprobamos si está completada */
     card.style.color = isCompleted ? "green" : "red"; /* Cambiamos el color */
   });
+  /* en vez de style.color, se podría hacer un classList.add y añadir una clase */
 }
 
 function clearAll() {
@@ -401,7 +407,7 @@ function clearAll() {
 function onlySeeMyTasks() {
   const filteredTasks = tasks.filter(task => task.userId === 3); /* Filtramos las tareas y las guardamos */
   printTask(filteredTasks); /* Imprimimos las tareas filtradas */
-  changeColorTask(filteredTasks);
+  /* changeColorTask(filteredTasks); */
 }
 
 function clickButton() {
@@ -413,5 +419,5 @@ function clickButton() {
 }
 
 printTask(tasks);
-changeColorTask(tasks);
+/* changeColorTask(tasks); */
 clickButton();
