@@ -58,6 +58,7 @@ function clickDeleteButton(taskId) {
       alert(`Error al eliminar la tarea: ${response}`);
     });
 }
+window.clickDeleteButton = clickDeleteButton;
 
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
