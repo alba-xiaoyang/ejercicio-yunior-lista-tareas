@@ -24,14 +24,20 @@ axios.get(urlTodos)
 } */
 
 function clickAddTaskButton() {
-  const buttonAddTask = document.querySelector("add-task");
+  console.log("Empezando función");
+  const buttonAddTask = document.getElementById("add-task");
+  console.log("Hemos señalado el botón");
   buttonAddTask.addEventListener("click", function () {
+    console.log("Antes de la tarea");
     const nameTask = document.getElementsById("name-task");
     let newTask = { userId: 10, nameTask, completed: false };
+    console.log("Después de la tarea");
     axios.post(urlTodos)
       .then((response) => {
+        console.log("Todo OK");
         newTask = response.data;
         tasks.push(newTask);
+        console.log("Ahora se imprime en pantalla");
         printTask(tasks);
       })
       .catch((response) => {
