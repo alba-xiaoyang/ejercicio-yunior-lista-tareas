@@ -29,7 +29,7 @@ function clickAddTaskButton() {
   console.log("Hemos señalado el botón");
   buttonAddTask.addEventListener("click", function () {
     console.log("Antes de la tarea");
-    const nameTask = document.getElementsById("name-task");
+    const nameTask = document.getElementById("name-task");
     let newTask = { userId: 10, nameTask, completed: false };
     console.log("Después de la tarea");
     axios.post(urlTodos)
