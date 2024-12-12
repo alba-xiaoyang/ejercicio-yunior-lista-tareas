@@ -18,14 +18,32 @@ axios.get(urlTodos)
   });
 
 /* Función que dado un id de tarea, cambia el estado de dicha tarea a completado */
-function completar(idRecogido) {
+/* function completar(idRecogido) {
   const taskTarget = tasks.find(task => task.id === idRecogido);
   taskTarget.completed = true;
+} */
+
+function clickAddTaskButton() {
+  const buttonAddTask = document.querySelector("add-task");
+  buttonAddTask.addEventListener("click", function () {
+    const nameTask = document.getElementsById("name-task");
+    let newTask = { userId: 10, nameTask, completed: false };
+    axios.post(urlTodos)
+      .then((response) => {
+        newTask = response.data;
+        tasks.push(newTask);
+        printTask(tasks);
+      })
+      .catch((response) => {
+        alert(`Error al guardar la nueva tarea: ${response}`);
+      });
+  });
 }
 
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
   const tasksContainer = document.querySelector(".tasks"); /* Señalamos la clase .tasks del HTML */
+  tasksContainer.innerHTML = "";
   tasks.forEach(task => {
     const taskContent = document.createElement("div"); /* Creamos una variable taskContent en js para cada div */
     taskContent.classList.add("card", "m-2"); /* A ese div, le añadimos una clase que sería .card y .m-2 */
@@ -52,14 +70,14 @@ function printTask(tasks) {
 }
 
 /* Función que cambia el color de las tareas según su estado */
-function changeColorTask(tasks) {
-  const taskCards = document.querySelectorAll(".card");
-  taskCards.forEach(card => {
-    const isCompleted = card.getAttribute("task-status") === "true"; /* Comprobamos si está completada */
-    card.style.color = isCompleted ? "green" : "red"; /* Cambiamos el color */
-  });
-  /* en vez de style.color, se podría hacer un classList.add y añadir una clase */
-}
+/* function changeColorTask(tasks) { */
+const taskCards = document.querySelectorAll(".card");
+taskCards.forEach(card => {
+  const isCompleted = card.getAttribute("task-status") === "true"; /* Comprobamos si está completada */
+  card.style.color = isCompleted ? "green" : "red"; /* Cambiamos el color */
+});
+/* } */
+/* en vez de style.color, se podría hacer un classList.add y añadir una clase */
 
 function clearAll() {
   const tasksContainer = document.querySelector(".tasks");
@@ -79,3 +97,5 @@ function clickButton() {
     onlySeeMyTasks();
   });
 }
+
+clickAddTaskButton();
