@@ -46,6 +46,19 @@ function clickAddTaskButton() {
   });
 }
 
+function clickDeleteButton(taskId) {
+  const taskFound = tasks.find(task => task.id === taskId);
+  axios.delete(urlTodos)
+    .then((response) => {
+      const index = tasks.indexOf(taskFound);
+      tasks = tasks.splice(index, 1);
+      printTask(tasks);
+    })
+    .catch((response) => {
+      alert(`Error al eliminar la tarea: ${response}`);
+    });
+}
+
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
   const tasksContainer = document.querySelector(".tasks"); /* Señalamos la clase .tasks del HTML */
@@ -66,6 +79,7 @@ function printTask(tasks) {
           <div class="id">Tarea número ${task.id}</div> 
           <div class="title">${task.title}</div> 
           <div class="status">Estado ${task.completed}</div> 
+          <button id="${task.id}" onClick="clickDeleteButton(${task.id})">Eliminar tarea</button>
         </div>
         `;
     /* Añadimos un atributo para indicar si la tarea está completada */
