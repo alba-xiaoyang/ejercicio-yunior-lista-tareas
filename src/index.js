@@ -3,6 +3,8 @@ import axios from "axios";
 const urlTodos = "https://jsonplaceholder.typicode.com/todos/";
 let tasks = [];
 
+let takIdEdit;
+
 console.log(tasks);
 
 axios.get(urlTodos)
@@ -63,10 +65,63 @@ window.clickDeleteButton = clickDeleteButton;
 function clickEditButton(taskId) {
   const taskFound = tasks.find(task => task.id === taskId);
 
-  console.log(taskFound);
+  printEditForm(taskFound);
 }
 
+function printEditForm(task) {
+  const formElement = document.getElementById("formulario");
+
+  let checkboxElement = "<p><input id=\"completed-task\" type=\"checkbox\">Completado</p>";
+  if (task.completed) {
+    checkboxElement = "<p><input id=\"completed-task\" type=\"checkbox\" checked>Completado</p>";
+  }
+
+  formElement.innerHTML = `
+    <p>ID Usuario: ${task.userId}</p>
+    <p>ID Tarea: ${task.id}</p>
+    <input id="name-editTask" type="text" value="${task.title}">
+    ${checkboxElement}
+    <button id="${task.id}" onClick="clickGuardarTarea(${task.id})">Guardar tarea</button>
+  `;
+}
 window.clickEditButton = clickEditButton;
+
+function clickGuardarTarea(taskId) {
+  const taskFound = tasks.find(task => task.id === taskId);
+
+  const newTaskName = document.getElementById("name-editTask").value;
+  const newTaskStatus = document.getElementById("completed-task");
+
+  console.log(newTaskName);
+  taskFound.title = newTaskName;
+  taskFound.completed = newTaskStatus.checked;
+  console.log(taskFound.title);
+  console.log(taskFound);
+
+  updateTask(taskFound);
+}
+window.clickGuardarTarea = clickGuardarTarea;
+
+function updateTask(updatedTask) {
+  console.log("updateTask");
+  console.log(updatedTask);
+
+  axios.patch(urlTodos + updatedTask.id, updatedTask)
+    .then((response) => {
+      tasks.forEach((task) => {
+        if (task.id === updatedTask.id) {
+          // task = response.data;
+          task = updatedTask;
+        }
+      });
+      printTask(tasks);
+      const formElement = document.getElementById("formulario");
+      formElement.innerHTML = "";
+    })
+    .catch((response) => {
+      alert(`Error al actualizar la task: ${response}`);
+    });
+}
 
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
