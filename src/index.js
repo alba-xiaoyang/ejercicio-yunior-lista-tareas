@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlTodos = "https://jsonplaceholder.typicode.com/todos";
+const urlTodos = "https://jsonplaceholder.typicode.com/todos/";
 let tasks = [];
 
 console.log(tasks);
@@ -48,10 +48,10 @@ function clickAddTaskButton() {
 
 function clickDeleteButton(taskId) {
   const taskFound = tasks.find(task => task.id === taskId);
-  axios.delete(urlTodos)
+  axios.delete(urlTodos + taskId)
     .then((response) => {
       const index = tasks.indexOf(taskFound);
-      tasks = tasks.splice(index, 1);
+      tasks.splice(index, 1);
       printTask(tasks);
     })
     .catch((response) => {
@@ -59,6 +59,14 @@ function clickDeleteButton(taskId) {
     });
 }
 window.clickDeleteButton = clickDeleteButton;
+
+function clickEditButton(taskId) {
+  const taskFound = tasks.find(task => task.id === taskId);
+
+  console.log(taskFound);
+}
+
+window.clickEditButton = clickEditButton;
 
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
@@ -80,6 +88,7 @@ function printTask(tasks) {
           <div class="id">Tarea número ${task.id}</div> 
           <div class="title">${task.title}</div> 
           <div class="status">Estado ${task.completed}</div> 
+          <button id="${task.id}" onClick="clickEditButton(${task.id})">Editar tarea</button>
           <button id="${task.id}" onClick="clickDeleteButton(${task.id})">Eliminar tarea</button>
         </div>
         `;
