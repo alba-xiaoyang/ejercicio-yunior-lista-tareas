@@ -1,369 +1,132 @@
-const tasks = [
-  {
-    userId: 1,
-    id: 1,
-    title: "delectus aut autem",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 2,
-    title: "quis ut nam facilis et officia qui",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 3,
-    title: "fugiat veniam minus",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 4,
-    title: "et porro tempora",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 5,
-    title: "laboriosam mollitia et enim quasi adipisci quia provident illum",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 6,
-    title: "qui ullam ratione quibusdam voluptatem quia omnis",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 7,
-    title: "illo expedita consequatur quia in",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 8,
-    title: "quo adipisci enim quam ut ab",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 9,
-    title: "molestiae perspiciatis ipsa",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 10,
-    title: "illo est ratione doloremque quia maiores aut",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 11,
-    title: "vero rerum temporibus dolor",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 12,
-    title: "ipsa repellendus fugit nisi",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 13,
-    title: "et doloremque nulla",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 14,
-    title: "repellendus sunt dolores architecto voluptatum",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 15,
-    title: "ab voluptatum amet voluptas",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 16,
-    title: "accusamus eos facilis sint et aut voluptatem",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 17,
-    title: "quo laboriosam deleniti aut qui",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 18,
-    title: "dolorum est consequatur ea mollitia in culpa",
-    completed: false
-  },
-  {
-    userId: 1,
-    id: 19,
-    title: "molestiae ipsa aut voluptatibus pariatur dolor nihil",
-    completed: true
-  },
-  {
-    userId: 1,
-    id: 20,
-    title: "ullam nobis libero sapiente ad optio sint",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 21,
-    title: "suscipit repellat esse quibusdam voluptatem incidunt",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 22,
-    title: "distinctio vitae autem nihil ut molestias quo",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 23,
-    title: "et itaque necessitatibus maxime molestiae qui quas velit",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 24,
-    title: "adipisci non ad dicta qui amet quaerat doloribus ea",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 25,
-    title: "voluptas quo tenetur perspiciatis explicabo natus",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 26,
-    title: "aliquam aut quasi",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 27,
-    title: "veritatis pariatur delectus",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 28,
-    title: "nesciunt totam sit blanditiis sit",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 29,
-    title: "laborum aut in quam",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 30,
-    title: "nemo perspiciatis repellat ut dolor libero commodi blanditiis omnis",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 31,
-    title: "repudiandae totam in est sint facere fuga",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 32,
-    title: "earum doloribus ea doloremque quis",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 33,
-    title: "sint sit aut vero",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 34,
-    title: "porro aut necessitatibus eaque distinctio",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 35,
-    title: "repellendus veritatis molestias dicta incidunt",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 36,
-    title: "excepturi deleniti adipisci voluptatem et neque optio illum ad",
-    completed: true
-  },
-  {
-    userId: 2,
-    id: 37,
-    title: "sunt cum tempora",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 38,
-    title: "totam quia non",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 39,
-    title: "doloremque quibusdam asperiores libero corrupti illum qui omnis",
-    completed: false
-  },
-  {
-    userId: 2,
-    id: 40,
-    title: "totam atque quo nesciunt",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 41,
-    title: "aliquid amet impedit consequatur aspernatur placeat eaque fugiat suscipit",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 42,
-    title: "rerum perferendis error quia ut eveniet",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 43,
-    title: "tempore ut sint quis recusandae",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 44,
-    title: "cum debitis quis accusamus doloremque ipsa natus sapiente omnis",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 45,
-    title: "velit soluta adipisci molestias reiciendis harum",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 46,
-    title: "vel voluptatem repellat nihil placeat corporis",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 47,
-    title: "nam qui rerum fugiat accusamus",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 48,
-    title: "sit reprehenderit omnis quia",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 49,
-    title: "ut necessitatibus aut maiores debitis officia blanditiis velit et",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 50,
-    title: "cupiditate necessitatibus ullam aut quis dolor voluptate",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 51,
-    title: "distinctio exercitationem ab doloribus",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 52,
-    title: "nesciunt dolorum quis recusandae ad pariatur ratione",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 53,
-    title: "qui labore est occaecati recusandae aliquid quam",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 54,
-    title: "quis et est ut voluptate quam dolor",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 55,
-    title: "voluptatum omnis minima qui occaecati provident nulla voluptatem ratione",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 56,
-    title: "deleniti ea temporibus enim",
-    completed: true
-  },
-  {
-    userId: 3,
-    id: 57,
-    title: "pariatur et magnam ea doloribus similique voluptatem rerum quia",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 58,
-    title: "est dicta totam qui explicabo doloribus qui dignissimos",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 59,
-    title: "perspiciatis velit id laborum placeat iusto et aliquam odio",
-    completed: false
-  },
-  {
-    userId: 3,
-    id: 60,
-    title: "et sequi qui architecto ut adipisci",
-    completed: true
-  },
-];
+import axios from "axios";
+
+const urlTodos = "https://jsonplaceholder.typicode.com/todos/";
+let tasks = [];
+
+let takIdEdit;
+
+console.log(tasks);
+
+axios.get(urlTodos)
+  .then((response) => {
+    tasks = response.data;
+    console.log(tasks);
+    printTask(tasks);
+    /* changeColorTask(tasks); */
+    clickButton();
+  })
+  .catch((response) => {
+    alert(`Ehto no funciona: ${response}`);
+  });
+
+/* Función que dado un id de tarea, cambia el estado de dicha tarea a completado */
+/* function completar(idRecogido) {
+  const taskTarget = tasks.find(task => task.id === idRecogido);
+  taskTarget.completed = true;
+} */
+
+function clickAddTaskButton() {
+  console.log("Empezando función");
+  const buttonAddTask = document.getElementById("add-task");
+  console.log("Hemos señalado el botón");
+  buttonAddTask.addEventListener("click", function () {
+    console.log("Antes de la tarea");
+    const nameTask = document.getElementById("name-task");
+    let newTask = { userId: 10, nameTask, completed: false };
+    console.log("Después de la tarea");
+    axios.post(urlTodos)
+      .then((response) => {
+        console.log("Todo OK");
+        newTask = response.data;
+        tasks.push(newTask);
+        console.log("Ahora se imprime en pantalla");
+        printTask(tasks);
+      })
+      .catch((response) => {
+        alert(`Error al guardar la nueva tarea: ${response}`);
+      });
+  });
+}
+
+function clickDeleteButton(taskId) {
+  const taskFound = tasks.find(task => task.id === taskId);
+  axios.delete(urlTodos + taskId)
+    .then((response) => {
+      const index = tasks.indexOf(taskFound);
+      tasks.splice(index, 1);
+      printTask(tasks);
+    })
+    .catch((response) => {
+      alert(`Error al eliminar la tarea: ${response}`);
+    });
+}
+window.clickDeleteButton = clickDeleteButton;
+
+function clickEditButton(taskId) {
+  const taskFound = tasks.find(task => task.id === taskId);
+
+  printEditForm(taskFound);
+}
+
+function printEditForm(task) {
+  const formElement = document.getElementById("formulario");
+
+  let checkboxElement = "<p><input id=\"completed-task\" type=\"checkbox\">Completado</p>";
+  if (task.completed) {
+    checkboxElement = "<p><input id=\"completed-task\" type=\"checkbox\" checked>Completado</p>";
+  }
+
+  formElement.innerHTML = `
+    <p>ID Usuario: ${task.userId}</p>
+    <p>ID Tarea: ${task.id}</p>
+    <input id="name-editTask" type="text" value="${task.title}">
+    ${checkboxElement}
+    <button id="${task.id}" onClick="clickGuardarTarea(${task.id})">Guardar tarea</button>
+  `;
+}
+window.clickEditButton = clickEditButton;
+
+function clickGuardarTarea(taskId) {
+  const taskFound = tasks.find(task => task.id === taskId);
+
+  const newTaskName = document.getElementById("name-editTask").value;
+  const newTaskStatus = document.getElementById("completed-task");
+
+  console.log(newTaskName);
+  taskFound.title = newTaskName;
+  taskFound.completed = newTaskStatus.checked;
+  console.log(taskFound.title);
+  console.log(taskFound);
+
+  updateTask(taskFound);
+}
+window.clickGuardarTarea = clickGuardarTarea;
+
+function updateTask(updatedTask) {
+  console.log("updateTask");
+  console.log(updatedTask);
+
+  axios.patch(urlTodos + updatedTask.id, updatedTask)
+    .then((response) => {
+      tasks.forEach((task) => {
+        if (task.id === updatedTask.id) {
+          // task = response.data;
+          task = updatedTask;
+        }
+      });
+      printTask(tasks);
+      const formElement = document.getElementById("formulario");
+      formElement.innerHTML = "";
+    })
+    .catch((response) => {
+      alert(`Error al actualizar la task: ${response}`);
+    });
+}
 
 /* Función que imprime las tareas en el DOM */
 function printTask(tasks) {
   const tasksContainer = document.querySelector(".tasks"); /* Señalamos la clase .tasks del HTML */
+  tasksContainer.innerHTML = "";
   tasks.forEach(task => {
     const taskContent = document.createElement("div"); /* Creamos una variable taskContent en js para cada div */
     taskContent.classList.add("card", "m-2"); /* A ese div, le añadimos una clase que sería .card y .m-2 */
@@ -380,6 +143,8 @@ function printTask(tasks) {
           <div class="id">Tarea número ${task.id}</div> 
           <div class="title">${task.title}</div> 
           <div class="status">Estado ${task.completed}</div> 
+          <button id="${task.id}" onClick="clickEditButton(${task.id})">Editar tarea</button>
+          <button id="${task.id}" onClick="clickDeleteButton(${task.id})">Eliminar tarea</button>
         </div>
         `;
     /* Añadimos un atributo para indicar si la tarea está completada */
@@ -390,14 +155,14 @@ function printTask(tasks) {
 }
 
 /* Función que cambia el color de las tareas según su estado */
-function changeColorTask(tasks) {
-  const taskCards = document.querySelectorAll(".card");
-  taskCards.forEach(card => {
-    const isCompleted = card.getAttribute("task-status") === "true"; /* Comprobamos si está completada */
-    card.style.color = isCompleted ? "green" : "red"; /* Cambiamos el color */
-  });
-  /* en vez de style.color, se podría hacer un classList.add y añadir una clase */
-}
+/* function changeColorTask(tasks) { */
+const taskCards = document.querySelectorAll(".card");
+taskCards.forEach(card => {
+  const isCompleted = card.getAttribute("task-status") === "true"; /* Comprobamos si está completada */
+  card.style.color = isCompleted ? "green" : "red"; /* Cambiamos el color */
+});
+/* } */
+/* en vez de style.color, se podría hacer un classList.add y añadir una clase */
 
 function clearAll() {
   const tasksContainer = document.querySelector(".tasks");
@@ -418,6 +183,4 @@ function clickButton() {
   });
 }
 
-printTask(tasks);
-/* changeColorTask(tasks); */
-clickButton();
+clickAddTaskButton();
